@@ -14,7 +14,7 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id();
+            $table->id(); 
             $table->string('name');
             $table->string('phoneNumber');
             $table->time('timer');
@@ -26,7 +26,6 @@ class CreateStudentsTable extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -17,12 +17,14 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('questionText');
             $table->integer('mark');
+            $table->unsignedBigInteger('language_id');
             $table->unsignedBigInteger('questionType_id');
             $table->unsignedBigInteger('text_id')->nullable();
             $table->unsignedBigInteger('record_id')->nullable();
             $table->foreign('questionType_id')->references('id')->on('question_types');
             $table->foreign('text_id')->references('id')->on('texts');
             $table->foreign('record_id')->references('id')->on('records');
+            $table->foreign('language_id')->references('id')->on('languages');
             $table->timestamps();
         });
     }
