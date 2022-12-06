@@ -10,7 +10,8 @@ class Question extends Model
     use HasFactory;
     protected $fillable = [
         'questionText',
-        'Mark',
+        'mark',
+        'language_id',
         'questionType_id',
         'record_id',
         'text_id'
