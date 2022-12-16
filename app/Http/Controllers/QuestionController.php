@@ -26,7 +26,8 @@ class QuestionController extends Controller
     }
     public function AddQuestion(Request $request){
         $question = Question::create($request->all());
-        //$answers = QuestionController::AddQuestionAnswers($request,$question->id);
+        if($request->answers != null)
+            $answers = QuestionController::AddQuestionAnswers($request,$question->id);
         return response()->json($question,200);
     }
     public function UpdateQuestion(Request $request , $id){
@@ -38,10 +39,11 @@ class QuestionController extends Controller
         return response()->json(['message' => 'success'],200);
     }
     public static function AddQuestionAnswers(Request $request ,$question_id){
-        for($i=0;$i<4;$i++){
-            $answer = Answer::create([
-                'answerText' => $request->answer[$i]->answerText,
-                'isCorrect' => $request->answer[$i]->isCorrect,
+        $answers = $request->answers;
+        foreach($answers as $answer){
+            $answersdf = Answer::create([
+                'answerText' => $answer['answerText'],
+                'isCorrect' => $answer['isCorrect'],
                 'question_id' => $question_id,
             ]);
         }
