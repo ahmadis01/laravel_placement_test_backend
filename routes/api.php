@@ -30,6 +30,7 @@ Route::put('/student/{id}',[StudentController::class, 'UpdateStudent']);
 Route::delete('/student/{id}',[StudentController::class, 'DeleteStudent']);
 Route::get('/studentlanguages/{id}',[StudentController::class, 'GetStudentLanguages']);
 Route::post('/addStudentLanguage/{studentId}/{languageId}',[StudentController::class, 'AddStudentLanguage']);
+Route::post('/submit/{student_id}/{language_id}',[StudentController::class, 'Submit']);
 
 //languages
 Route::get('/language',[LanguageController::class, 'GetLanguages']);

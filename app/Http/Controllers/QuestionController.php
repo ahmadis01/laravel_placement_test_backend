@@ -26,7 +26,7 @@ class QuestionController extends Controller
     }
     public function AddQuestion(Request $request){
         $question = Question::create($request->all());
-        $answers = QuestionController::AddQuestionAnswers($request,$question->id);
+        //$answers = QuestionController::AddQuestionAnswers($request,$question->id);
         return response()->json($question,200);
     }
     public function UpdateQuestion(Request $request , $id){

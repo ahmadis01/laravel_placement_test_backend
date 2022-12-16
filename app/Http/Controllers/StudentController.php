@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
+use App\Models\AnswerDto;
+use App\Models\Question;
 use App\Models\Student;
 use App\Models\StudentLanguage;
 use Illuminate\Http\Request;
@@ -45,5 +48,19 @@ class StudentController extends Controller
     public function DeleteStudent( $id){
         $student = Student::find($id)->delete();
         return response()->json(['message' => 'success'],200);
+    }
+    public function Submit(Request $request , $student_id , $language_id)
+    {
+        $mark = 0;
+        $answers = $request->answers;
+        foreach($answers as $answer){
+            $CorrectAnswer = Answer::where('question_id',$answer['question_id'])->where('isCorrect',1)->first();
+            if($answer['answer_id'] == $CorrectAnswer->id)
+               $mark++;
+        }
+        $student = StudentLanguage::where('student_id',$student_id)->where('language_id',$language_id)->update([
+            'mark' => $mark,
+        ]);
+        return response()->json($mark);
     }
 }

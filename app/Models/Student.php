@@ -12,10 +12,5 @@ class Student extends Model
         'name',
         'phoneNumber',
         'timer',
-        'currentQuestion',
-        'listeningMark',
-        'grammerMark',
-        'writingMark',
-        'speakingMark'
     ];
 }

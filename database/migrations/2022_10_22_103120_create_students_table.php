@@ -17,12 +17,8 @@ class CreateStudentsTable extends Migration
             $table->id(); 
             $table->string('name');
             $table->string('phoneNumber');
-            $table->time('timer');
-            $table->integer('listeningMark');
-            $table->integer('speakingMark');
-            $table->integer('grammerMark');
-            $table->integer('writingMark');
-            $table->integer('currentQuestion');
+            $table->time('timer')->nullable();
+            $table->integer('currentQuestion')->nullable();
             $table->timestamps();
         });
     }

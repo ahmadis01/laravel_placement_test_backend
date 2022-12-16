@@ -17,6 +17,7 @@ class CreateStudnetLanguagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('language_id');
             $table->unsignedBigInteger('student_id');
+            $table->integer('mark')->nullable();
             $table->foreign('language_id')->references('id')->on('languages');
             $table->foreign('student_id')->references('id')->on('students');
             $table->timestamps();
